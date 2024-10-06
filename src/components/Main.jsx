@@ -49,31 +49,23 @@ const Main = () => {
 
               <h1 className='text-xl font-semibold ml-2 mb-2'>YOUR TODOS</h1>
                 {todos.map(item=>{ 
-                  return <div key={item.id} className='todo p-2 flex items-center'>
-                  
-                  <div className="1 flex gap-4 w-[90%]">
-                    <input onChange={handlCheckbox} type="checkbox" name={item.id}/>
-                    <div className={item.isComplted?"line-through":""}>{item.todo}</div>
-                  </div>
-                  <div className="2 flex gap-4 items-center">
-                    <button onClick={handleEdit} className='bg-blue-400 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Edit</button>
-                    <button onClick={handleDelete} className='bg-red-600 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Delete</button>
-                  </div>
-                  </div>
-                  
+                    return <div key={item.id} className='todo p-2 flex items-center'>
+                    
+                    <div className="1 flex gap-4 w-[90%]">
+                      <input onChange={handlCheckbox} type="checkbox" name={item.id}/>
+                      <div className={item.isComplted?"line-through":""}>{item.todo}</div>
+                    </div>
+                    <div className="2 flex gap-4 items-center">
+                      <button onClick={handleEdit} className='bg-blue-400 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Edit</button>
+                      <button onClick={handleDelete} className='bg-red-600 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Delete</button>
+                    </div>
+                    </div>
                   })}
-                
-              
-            
-              
             </div>
           </div>
         </div>
-    </div>
-    
+    </div> 
   )
-
-  
 }
 
 export default Main
