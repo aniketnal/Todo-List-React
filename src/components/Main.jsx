@@ -40,7 +40,10 @@ const Main = () => {
   }
   // Handles the deletion of todo
   const handleDelete = (id)=>{
-    
+    let todo = todos.filter(item=>{
+      item.id !== id
+    })
+    setTodos(todo);
   }
 
   return (
@@ -64,7 +67,7 @@ const Main = () => {
                     </div>
                     <div className="2 flex gap-4 items-center">
                       <button onClick={(e)=>handleEdit(e, item.id)} className='bg-blue-400 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Edit</button>
-                      <button onClick={handleDelete} className='bg-red-600 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Delete</button>
+                      <button onClick={(e)=>handleDelete(e, item.id)} className='bg-red-600 text-white px-2 rounded-lg text-center font-medium max-sm:font-medium'>Delete</button>
                     </div>
                     </div>  
                   })}
