@@ -36,7 +36,7 @@ const Main = () => {
     let newTodods = todos.filter(item=>{
       item.id !== id;
     })
-    setTodos(newTodods);
+    setTodos(newTodods)
   }
   // Handles the deletion of todo
   const handleDelete = (id)=>{
