@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 const Main = () => {
@@ -10,6 +10,18 @@ const Main = () => {
     setTodos([...todos, {id: uuidv4(), todo, isComplted: false}])
     setTodo("");
   }
+
+  // Save Todos to Local Storage
+  const saveToLocalStorage = (todos)=>{
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+  // Intially Renders the saved Todos from Local Storage
+  useEffect(() => {
+    if(localStorage.getItem("todos")){
+      setTodos(JSON.parse(localStorage.getItem("todos")))
+    }
+  }, [])
+  
 
   // Handles the change of todo
   const handleChange = (e)=>{
@@ -34,16 +46,16 @@ const Main = () => {
     )
     setTodo(t[0].todo);
     let newTodods = todos.filter(item=>{
-      item.id !== id;
+      return item.id !== id;
     })
     setTodos(newTodods)
   }
   // Handles the deletion of todo
-  const handleDelete = (id)=>{
-    let todo = todos.filter(item=>{
-      item.id !== id
+  const handleDelete = (e, id)=>{
+    let newTodos = todos.filter(item=>{
+      return item.id !== id
     })
-    setTodos(todo);
+    setTodos(newTodos)
   }
 
   return (
